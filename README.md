@@ -55,6 +55,7 @@ La carpeta [`config/`](config/) contiene una copia reproducible de la configurac
 | `config/tmux/.tmux.conf` | `~/.tmux.conf` | Atajos, mouse, portapapeles y estilo de tmux |
 | `config/shell/.zshrc` | `~/.zshrc` | Aliases, funciones y carga de herramientas |
 | `config/shell/.p10k.zsh` | `~/.p10k.zsh` | Tema Powerlevel10k; la ruta del prompt usa color blanco |
+| `config/thefuck/settings.py` | `~/.config/thefuck/settings.py` | Ajustes de `thefuck` |
 
 ### Instalación segura
 
@@ -75,6 +76,8 @@ cp -a config/nvim-gentleman "$HOME/.config/"
 cp config/tmux/.tmux.conf "$HOME/.tmux.conf"
 cp config/shell/.zshrc "$HOME/.zshrc"
 cp config/shell/.p10k.zsh "$HOME/.p10k.zsh"
+mkdir -p "$HOME/.config/thefuck"
+cp config/thefuck/settings.py "$HOME/.config/thefuck/settings.py"
 ```
 
 Después, recargá Zsh y validá Powerlevel10k:
@@ -95,7 +98,7 @@ El `.zshrc` configura, entre otros:
 
 #### `thefuck` y el comando `fuck`
 
-`thefuck` no se copia como un archivo dentro del repositorio: es una herramienta externa que debe estar instalada en la máquina. Al iniciar Zsh, `config/shell/.zshrc` ejecuta `thefuck --alias` y genera la función interactiva `fuck`.
+`thefuck` es una herramienta externa que debe estar instalada en la máquina. Su configuración se respalda en `config/thefuck/settings.py`. Al iniciar Zsh, `config/shell/.zshrc` ejecuta `thefuck --alias` y genera la función interactiva `fuck`.
 
 Verificá la instalación con:
 
