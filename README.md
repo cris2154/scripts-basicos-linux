@@ -93,6 +93,30 @@ El `.zshrc` configura, entre otros:
 - `thefuck`: genera su alias automáticamente cuando está instalado.
 - `yazi`, `zoxide`, `eza`, `fzf`, `Powerlevel10k` y `zsh-syntax-highlighting`.
 
+#### `thefuck` y el comando `fuck`
+
+`thefuck` no se copia como un archivo dentro del repositorio: es una herramienta externa que debe estar instalada en la máquina. Al iniciar Zsh, `config/shell/.zshrc` ejecuta `thefuck --alias` y genera la función interactiva `fuck`.
+
+Verificá la instalación con:
+
+```bash
+command -v thefuck
+thefuck --alias
+command -v fuck
+```
+
+Si falta, instalalo con el método recomendado por tu distribución o mediante `pipx`:
+
+```bash
+pipx install thefuck
+```
+
+Después recargá la shell:
+
+```bash
+source ~/.zshrc
+```
+
 Instalá únicamente las herramientas que quieras usar. Si una no está instalada, eliminá su bloque del `.zshrc` o instalala con el gestor de paquetes de tu distribución.
 
 > **Seguridad:** revisá el contenido antes de copiarlo a otra máquina. No agregues tokens, claves SSH, contraseñas ni archivos `.env` a este repositorio.
