@@ -51,10 +51,13 @@ La carpeta [`config/`](config/) contiene una copia reproducible de la configurac
 
 | Ruta | Destino | Propósito |
 | --- | --- | --- |
-| `config/nvim-gentleman/` | `~/.config/nvim-gentleman/` | Perfil aislado de Neovim basado en LazyVim |
-| `config/tmux/.tmux.conf` | `~/.tmux.conf` | Atajos, mouse, portapapeles y estilo de tmux |
+| `config/nvim-gentleman/` | `~/.config/nvim-gentleman/` | Perfil aislado de Neovim basado en LazyVim (estilo Azul Neón) |
+| `config/tmux/.tmux.conf` | `~/.tmux.conf` | Atajos, mouse, portapapeles y estilo Azul Neón Intenso de tmux |
 | `config/shell/.zshrc` | `~/.zshrc` | Aliases, funciones y carga de herramientas |
-| `config/shell/.p10k.zsh` | `~/.p10k.zsh` | Tema Powerlevel10k; la ruta del prompt usa color blanco |
+| `config/shell/.p10k.zsh` | `~/.p10k.zsh` | Tema Powerlevel10k con cápsulas Azul Neón (`#0f2952` / `#38bdf8`) |
+| `config/cmatrix/cmatrix-jp.c` | `~/.local/bin/cmatrix` | Matrix en japonés (Katakana) con TrueColor 24-bit Azul Neón y fondo transparente |
+| `config/cava/config` | `~/.config/cava/config` | Gradiente de 8 tonos Azul Neón para CAVA |
+| `config/terminal/windows-terminal-settings.json` | `settings.json` (Windows Terminal) | Esquema de colores y background Azul Neón (`#03122F`) con acrílico |
 | `config/thefuck/settings.py` | `~/.config/thefuck/settings.py` | Ajustes de `thefuck` |
 
 ### Instalación segura
@@ -65,7 +68,7 @@ Ejecutá estos comandos desde la raíz de este repositorio. Se crea un respaldo 
 set -e
 
 backup_dir="$HOME/.config/scripts-basicos-linux-backup-$(date +%Y%m%d-%H%M%S)"
-mkdir -p "$backup_dir" "$HOME/.config"
+mkdir -p "$backup_dir" "$HOME/.config" "$HOME/.local/bin"
 
 [ ! -e "$HOME/.config/nvim-gentleman" ] || mv "$HOME/.config/nvim-gentleman" "$backup_dir/"
 [ ! -e "$HOME/.tmux.conf" ] || mv "$HOME/.tmux.conf" "$backup_dir/"
@@ -76,8 +79,10 @@ cp -a config/nvim-gentleman "$HOME/.config/"
 cp config/tmux/.tmux.conf "$HOME/.tmux.conf"
 cp config/shell/.zshrc "$HOME/.zshrc"
 cp config/shell/.p10k.zsh "$HOME/.p10k.zsh"
-mkdir -p "$HOME/.config/thefuck"
+mkdir -p "$HOME/.config/thefuck" "$HOME/.config/cava"
 cp config/thefuck/settings.py "$HOME/.config/thefuck/settings.py"
+cp config/cava/config "$HOME/.config/cava/config"
+gcc -O2 -Wall -Wextra -o "$HOME/.local/bin/cmatrix" config/cmatrix/cmatrix-jp.c
 ```
 
 Después, recargá Zsh y validá Powerlevel10k:

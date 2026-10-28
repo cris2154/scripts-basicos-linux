@@ -1,0 +1,48 @@
+# Configuration file for CAVA
+# Optimizado: Azul Fuerte Neón + Barras Pequeñas y Responsive
+
+[general]
+framerate = 60
+autosens = 1
+sensitivity = 100
+
+# 0 = auto: se adapta automáticamente a la pantalla de la terminal
+bars = 0
+
+# Barras pequeñas (1 char de ancho) para que sean estilizadas y responsive
+bar_width = 1
+bar_spacing = 1
+
+# Centra las barras en la pantalla
+center_align = 1
+
+# Altura máxima
+max_height = 100
+
+[input]
+method = pulse
+source = auto
+
+[output]
+method = noncurses
+orientation = bottom
+channels = stereo
+
+[color]
+background = default
+foreground = default
+
+# Gradiente de 8 tonos Azul Fuerte / Cian Neón
+gradient = 1
+gradient_color_1 = '#0a1931'
+gradient_color_2 = '#172554'
+gradient_color_3 = '#1e3a8a'
+gradient_color_4 = '#1d4ed8'
+gradient_color_5 = '#2563eb'
+gradient_color_6 = '#0284c7'
+gradient_color_7 = '#0ea5e9'
+gradient_color_8 = '#38bdf8'
+
+[smoothing]
+monstercat = 1
+noise_reduction = 75

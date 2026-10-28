@@ -34,9 +34,9 @@ local function open_ranger(open_in_new_tab)
   local palette = require("gentleman_kanagawa_blur.palette")
   local terminal_colors = {
     palette.gray1, palette.red, palette.green, palette.yellow,
-    palette.blue, "#A855F7", palette.cyan, palette.fg,
+    palette.blue, "#0EA5E9", palette.cyan, palette.fg,
     palette.selection, palette.bright_red, palette.bright_green, palette.bright_yellow,
-    palette.bright_blue, "#C084FC", palette.bright_cyan, palette.fg,
+    palette.bright_blue, "#38BDF8", palette.bright_cyan, palette.fg,
   }
   for index, color in ipairs(terminal_colors) do
     vim.b["terminal_color_" .. (index - 1)] = color
