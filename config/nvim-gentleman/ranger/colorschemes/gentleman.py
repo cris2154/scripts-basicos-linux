@@ -27,7 +27,7 @@ class Scheme(ColorScheme):
             if context.cut or context.copied:
                 foreground = cyan
             if context.selected:
-                foreground, background, attribute = magenta + 8, default, bold | underline
+                foreground, background, attribute = blue + 8, default, bold | underline
             if context.empty or context.error or context.badinfo:
                 foreground = red
         elif context.in_titlebar:
@@ -44,5 +44,5 @@ class Scheme(ColorScheme):
         elif context.in_taskview:
             foreground = blue
             if context.selected:
-                foreground, background, attribute = magenta + 8, default, bold | underline
+                foreground, background, attribute = blue + 8, default, bold | underline
         return foreground, background, attribute

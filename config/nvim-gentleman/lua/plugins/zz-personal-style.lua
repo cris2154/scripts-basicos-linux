@@ -4,7 +4,7 @@ local function transparent_tabline()
     highlight.bg = nil
     highlight.ctermbg = nil
     if group == "TabLineSel" then
-      highlight.fg = 0xC084FC
+      highlight.fg = 0x38BDF8
       highlight.bold = true
     end
     vim.api.nvim_set_hl(0, group, highlight)
@@ -12,7 +12,7 @@ local function transparent_tabline()
 end
 
 local function set_visual_selection()
-  local selection = { bg = "#7C3AED", fg = "#FFFFFF", bold = true }
+  local selection = { bg = "#2563EB", fg = "#FFFFFF", bold = true }
   vim.api.nvim_set_hl(0, "Visual", selection)
   vim.api.nvim_set_hl(0, "VisualNOS", selection)
 end
@@ -34,26 +34,26 @@ return {
       set_visual_selection()
       local theme = vim.deepcopy(require("lualine.themes.gentleman-kanagawa-blur"))
       local modes = {
-        normal = "#7C3AED",
-        insert = "#9333EA",
-        visual = "#A21CAF",
+        normal = "#2563EB",
+        insert = "#0284C7",
+        visual = "#0EA5E9",
         replace = "#BE185D",
-        command = "#6D28D9",
-        terminal = "#8B22D6",
+        command = "#1D4ED8",
+        terminal = "#0369A1",
       }
       for mode, background in pairs(modes) do
         theme[mode] = {
           a = { fg = "#FFFFFF", bg = background, gui = "bold" },
-          b = { fg = "#D8B4FE", bg = "NONE" },
+          b = { fg = "#93C5FD", bg = "NONE" },
           c = { fg = "#F3F6F9", bg = "NONE" },
-          x = { fg = "#D8B4FE", bg = "NONE" },
-          y = { fg = "#E9D5FF", bg = "#3B1764" },
+          x = { fg = "#93C5FD", bg = "NONE" },
+          y = { fg = "#DBEAFE", bg = "#0F2952" },
           z = { fg = "#FFFFFF", bg = background, gui = "bold" },
         }
       end
       theme.inactive = {
-        a = { fg = "#C4B5FD", bg = "NONE" },
-        b = { fg = "#C4B5FD", bg = "NONE" },
+        a = { fg = "#93C5FD", bg = "NONE" },
+        b = { fg = "#93C5FD", bg = "NONE" },
         c = { fg = "#8A8FA3", bg = "NONE" },
       }
       opts.options = opts.options or {}
@@ -87,8 +87,8 @@ return {
             use_mode_colors = false,
             max_length = function() return math.floor(vim.o.columns * 0.62) end,
             buffers_color = {
-              active = { fg = "#FFFFFF", bg = "#7C3AED", gui = "bold" },
-              inactive = { fg = "#C4B5FD", bg = "#251C3B" },
+              active = { fg = "#FFFFFF", bg = "#2563EB", gui = "bold" },
+              inactive = { fg = "#93C5FD", bg = "#0F2952" },
             },
             symbols = { modified = " ●", alternate_file = "", directory = " " },
             filetype_names = {
@@ -124,8 +124,8 @@ return {
             mode = 0,
             cond = function() return #vim.api.nvim_list_tabpages() > 1 end,
             tabs_color = {
-              active = { fg = "#FFFFFF", bg = "#7C3AED", gui = "bold" },
-              inactive = { fg = "#C4B5FD", bg = "#251C3B" },
+              active = { fg = "#FFFFFF", bg = "#2563EB", gui = "bold" },
+              inactive = { fg = "#93C5FD", bg = "#0F2952" },
             },
             separator = nil,
             section_separators = { left = "│", right = "│" },

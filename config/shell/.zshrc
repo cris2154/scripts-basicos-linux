@@ -25,8 +25,8 @@ bindkey -e
 source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 bindkey '^[[C' forward-char
 
-# fzf: integración compatible con distintas versiones
-export FZF_DEFAULT_OPTS='--height=40% --layout=reverse --border'
+# fzf: integración compatible con distintas versiones + tema Azul Neón
+export FZF_DEFAULT_OPTS='--height=40% --layout=reverse --border --color=bg+:#0f2952,fg+:#ffffff,hl:#38bdf8,hl+:#67e8f9,pointer:#38bdf8,marker:#2563eb,prompt:#38bdf8,header:#60a5fa,border:#2563eb,info:#93c5fd'
 
 if fzf --zsh >/dev/null 2>&1; then
   eval "$(fzf --zsh)"
@@ -107,8 +107,16 @@ eval $(thefuck --alias)
 # Open the isolated Gentleman Neovim profile.
 alias nv="NVIM_APPNAME=nvim-gentleman nvim"
 
-# csakura
-alias saku='csakura'
+# csakura (paleta azul sky)
+alias saku='csakura -c sky'
+
+# cmatrix en japonés (Katakana) + Azul Neón por defecto
+alias cmatrix="$HOME/.local/bin/cmatrix -c -C blue"
+alias matrix="$HOME/.local/bin/cmatrix -c -C blue"
+
+# pipes.sh en Azul Neón
+alias pipes="$HOME/.local/bin/pipes.sh"
+alias pipesh="$HOME/.local/bin/pipes.sh"
 
 # CAVA Windows Audio Capture
 alias cava='cava-windows'
