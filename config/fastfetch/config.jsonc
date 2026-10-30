@@ -1,0 +1,51 @@
+{
+  "logo": {
+    "type": "file",
+    "source": "~/.config/fastfetch/logo.txt",
+    "color": {
+      "1": "38;2;56;189;248",
+      "2": "38;2;103;232;249",
+      "3": "38;2;129;212;250"
+    },
+    "padding": { "top": 0, "right": 3 }
+  },
+  "display": {
+    "separator": "  ",
+    "color": {
+      "keys": "38;2;56;189;248",
+      "title": "38;2;103;232;249",
+      "separator": "38;2;37;99;235"
+    },
+    "key": { "width": 12 },
+    "percent": { "type": ["bar", "num"] },
+    "bar": {
+      "width": 10,
+      "char": { "elapsed": "━", "total": "─" },
+      "color": {
+        "elapsed": "38;2;56;189;248",
+        "total": "38;2;15;41;82"
+      }
+    }
+  },
+  "modules": [
+    "title",
+    "break",
+    { "type": "custom", "format": "{#38;2;56;189;248}╭─ SYSTEM ──────────────────────" },
+    { "type": "os", "key": "OS", "format": "{name} {version-id} ({arch})" },
+    { "type": "host", "key": "Host", "format": "{name}" },
+    { "type": "kernel", "key": "Kernel", "format": "{release}" },
+    "uptime",
+    "packages",
+    "break",
+    { "type": "custom", "format": "{#38;2;56;189;248}├─ TERMINAL ────────────────────" },
+    "shell",
+    "terminal",
+    "break",
+    { "type": "custom", "format": "{#38;2;56;189;248}├─ RESOURCES ───────────────────" },
+    { "type": "cpu", "key": "CPU", "format": "{name}" },
+    { "type": "memory", "key": "Memory", "format": "{percentage-bar} {used} / {total} ({percentage})" },
+    { "type": "swap", "key": "Swap", "format": "{percentage-bar} {used} / {total} ({percentage})" },
+    { "type": "disk", "folders": "/", "key": "Disk /", "format": "{size-percentage-bar} {size-used} / {size-total} ({size-percentage})" },
+    { "type": "custom", "format": "{#38;2;56;189;248}╰───────────────────────────────" }
+  ]
+}

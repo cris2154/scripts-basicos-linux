@@ -114,6 +114,10 @@ alias saku='csakura -c sky'
 alias cmatrix="$HOME/.local/bin/cmatrix -c -C blue"
 alias matrix="$HOME/.local/bin/cmatrix -c -C blue"
 
+# pipes.sh en Azul Neón
+alias pipes="$HOME/.local/bin/pipes.sh"
+alias pipesh="$HOME/.local/bin/pipes.sh"
+
 # CAVA Windows Audio Capture
 alias cava='cava-windows'
 alias cava-windols='cava-windows'
