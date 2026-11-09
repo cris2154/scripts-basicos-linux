@@ -58,7 +58,7 @@ La carpeta [`config/`](config/) contiene una copia reproducible de la configurac
 | `config/cmatrix/cmatrix-jp.c` | `~/.local/bin/cmatrix` | Matrix en japonés (Katakana) con TrueColor 24-bit Azul Neón y fondo transparente |
 | `config/pipes/pipes.sh` | `~/.local/bin/pipes.sh` | `pipes.sh` configurado con paleta Azul Neón / Cian Eléctrico (`pipes`, `pipesh`) |
 | `config/cava/config` | `~/.config/cava/config` | Gradiente de 8 tonos Azul Neón para CAVA |
-| `config/fastfetch/` | `~/.config/fastfetch/` | Logo Unicode personalizado en cian y datos agrupados de sistema, terminal y recursos para WSL |
+| `config/fastfetch/` | `~/.config/fastfetch/` | Logo Unicode personalizado en cian con temperatura de CPU, GPU dedicada y RAM |
 | `config/terminal/windows-terminal-settings.json` | `settings.json` (Windows Terminal) | Esquema de colores y background Azul Neón (`#03122F`) con acrílico |
 | `config/thefuck/settings.py` | `~/.config/thefuck/settings.py` | Ajustes de `thefuck` |
 
@@ -100,7 +100,7 @@ source "$HOME/.zshrc"
 
 ### Fastfetch con logo personalizado
 
-Requiere `fastfetch` (configuración validada con la versión 2.57.1). Para instalar solo este perfil, desde la raíz del repositorio:
+Requiere `fastfetch` (configuración validada con la versión 2.68.1). Para instalar solo este perfil, desde la raíz del repositorio:
 
 ```bash
 if [ -e "$HOME/.config/fastfetch" ]; then
@@ -111,7 +111,7 @@ cp config/fastfetch/config.jsonc config/fastfetch/logo.txt "$HOME/.config/fastfe
 fastfetch
 ```
 
-El logo conserva el dibujo Unicode completo. Los datos incluyen sistema, kernel, tiempo encendido, paquetes, shell, terminal, CPU y barras de RAM, swap y disco raíz. Se omiten los detalles extensos de WSLg y las GPU virtuales repetidas. Para evitar saltos de línea junto al dibujo, se recomienda una terminal de al menos 150 columnas.
+El logo conserva el dibujo Unicode completo. Debajo solo muestra la temperatura de la CPU, la GPU dedicada con su temperatura y una barra de RAM; las GPU integradas se omiten.
 
 ### Herramientas usadas por los aliases
 

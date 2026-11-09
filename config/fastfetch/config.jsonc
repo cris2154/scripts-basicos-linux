@@ -2,6 +2,7 @@
   "logo": {
     "type": "file",
     "source": "~/.config/fastfetch/logo.txt",
+    "position": "top",
     "color": {
       "1": "38;2;56;189;248",
       "2": "38;2;103;232;249",
@@ -11,12 +12,12 @@
   },
   "display": {
     "separator": "  ",
+    "disableLinewrap": true,
     "color": {
       "keys": "38;2;56;189;248",
-      "title": "38;2;103;232;249",
       "separator": "38;2;37;99;235"
     },
-    "key": { "width": 12 },
+    "key": { "width": 5 },
     "percent": { "type": ["bar", "num"] },
     "bar": {
       "width": 10,
@@ -28,24 +29,8 @@
     }
   },
   "modules": [
-    "title",
-    "break",
-    { "type": "custom", "format": "{#38;2;56;189;248}╭─ SYSTEM ──────────────────────" },
-    { "type": "os", "key": "OS", "format": "{name} {version-id} ({arch})" },
-    { "type": "host", "key": "Host", "format": "{name}" },
-    { "type": "kernel", "key": "Kernel", "format": "{release}" },
-    "uptime",
-    "packages",
-    "break",
-    { "type": "custom", "format": "{#38;2;56;189;248}├─ TERMINAL ────────────────────" },
-    "shell",
-    "terminal",
-    "break",
-    { "type": "custom", "format": "{#38;2;56;189;248}├─ RESOURCES ───────────────────" },
-    { "type": "cpu", "key": "CPU", "format": "{name}" },
-    { "type": "memory", "key": "Memory", "format": "{percentage-bar} {used} / {total} ({percentage})" },
-    { "type": "swap", "key": "Swap", "format": "{percentage-bar} {used} / {total} ({percentage})" },
-    { "type": "disk", "folders": "/", "key": "Disk /", "format": "{size-percentage-bar} {size-used} / {size-total} ({size-percentage})" },
-    { "type": "custom", "format": "{#38;2;56;189;248}╰───────────────────────────────" }
+    { "type": "cpu", "key": "CPU", "temp": true, "format": "{temperature}" },
+    { "type": "gpu", "key": "GPU", "hideType": "integrated", "temp": true, "format": "{name} · {temperature}" },
+    { "type": "memory", "key": "RAM", "format": "{percentage-bar} {used} / {total} ({percentage})" }
   ]
 }
