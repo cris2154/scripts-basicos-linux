@@ -1,0 +1,16 @@
+#!/bin/sh
+# Reemplazo de wl-paste con xclip: evita la ventana/notificación de GNOME Wayland.
+sel=clipboard; tipo=; listar=0; sin_salto=0
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -p|--primary) sel=primary ;;
+    -l|--list-types) listar=1 ;;
+    -n|--no-newline) sin_salto=1 ;;
+    -t|--type) shift; tipo=$1 ;;
+    -s|--seat) shift ;;
+  esac
+  shift
+done
+if [ "$listar" -eq 1 ]; then exec xclip -selection "$sel" -t TARGETS -o; fi
+if [ -n "$tipo" ]; then exec xclip -selection "$sel" -t "$tipo" -o; fi
+if [ "$sin_salto" -eq 1 ]; then printf '%s' "$(xclip -selection "$sel" -o)"; else exec xclip -selection "$sel" -o; fi

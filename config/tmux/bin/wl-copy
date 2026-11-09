@@ -1,0 +1,18 @@
+#!/bin/sh
+# Reemplazo de wl-copy con xclip: evita la ventana/notificación de GNOME Wayland.
+sel=clipboard; tipo=; limpiar=0; texto=; hay_texto=0
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -p|--primary) sel=primary ;;
+    -c|--clear) limpiar=1 ;;
+    -t|--type) shift; tipo=$1 ;;
+    -n|--trim-newline|-o|--paste-once|-f|--foreground|-s|--seat) [ "$1" = "-s" ] || [ "$1" = "--seat" ] && shift ;;
+    --) shift; texto=$*; hay_texto=1; break ;;
+    -*) ;;
+    *) texto=$*; hay_texto=1; break ;;
+  esac
+  shift
+done
+if [ "$limpiar" -eq 1 ]; then printf '' | exec xclip -selection "$sel" -i; fi
+if [ "$hay_texto" -eq 1 ]; then printf '%s' "$texto" | exec xclip -selection "$sel" ${tipo:+-t "$tipo"} -i; fi
+exec xclip -selection "$sel" ${tipo:+-t "$tipo"} -i
