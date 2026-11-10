@@ -18,4 +18,6 @@ if vim.env.SSH_CONNECTION then
       ["*"] = osc52.paste("*"),
     },
   }
+else
+  vim.g.clipboard = "xsel"
 end

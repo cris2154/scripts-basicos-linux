@@ -59,6 +59,7 @@ La carpeta [`config/`](config/) contiene una copia reproducible de la configurac
 | `config/pipes/pipes.sh` | `~/.local/bin/pipes.sh` | `pipes.sh` configurado con paleta Azul Neón / Cian Eléctrico (`pipes`, `pipesh`) |
 | `config/cava/config` | `~/.config/cava/config` | Gradiente de 8 tonos Azul Neón para CAVA |
 | `config/fastfetch/` | `~/.config/fastfetch/` | Logo Unicode personalizado en cian con temperatura de CPU, GPU dedicada y RAM |
+| `config/ranger/` | `~/.config/ranger/` | Administrador de archivos Ranger con tema Azul Neón (`neon`), iconos Nerd Fonts y previsualización |
 | `config/terminal/windows-terminal-settings.json` | `settings.json` (Windows Terminal) | Esquema de colores y background Azul Neón (`#03122F`) con acrílico |
 | `config/thefuck/settings.py` | `~/.config/thefuck/settings.py` | Ajustes de `thefuck` |
 
@@ -73,11 +74,13 @@ backup_dir="$HOME/.config/scripts-basicos-linux-backup-$(date +%Y%m%d-%H%M%S)"
 mkdir -p "$backup_dir" "$HOME/.config" "$HOME/.local/bin"
 
 [ ! -e "$HOME/.config/nvim-gentleman" ] || mv "$HOME/.config/nvim-gentleman" "$backup_dir/"
+[ ! -e "$HOME/.config/ranger" ] || mv "$HOME/.config/ranger" "$backup_dir/"
 [ ! -e "$HOME/.tmux.conf" ] || mv "$HOME/.tmux.conf" "$backup_dir/"
 [ ! -e "$HOME/.zshrc" ] || mv "$HOME/.zshrc" "$backup_dir/"
 [ ! -e "$HOME/.p10k.zsh" ] || mv "$HOME/.p10k.zsh" "$backup_dir/"
 
 cp -a config/nvim-gentleman "$HOME/.config/"
+cp -a config/ranger "$HOME/.config/"
 cp config/tmux/.tmux.conf "$HOME/.tmux.conf"
 cp config/shell/.zshrc "$HOME/.zshrc"
 cp config/shell/.p10k.zsh "$HOME/.p10k.zsh"
@@ -119,7 +122,22 @@ El `.zshrc` configura, entre otros:
 
 - `nv`: abre Neovim con el perfil `nvim-gentleman`.
 - `thefuck`: genera su alias automáticamente cuando está instalado.
-- `yazi`, `zoxide`, `eza`, `fzf`, `Powerlevel10k` y `zsh-syntax-highlighting`.
+- `ranger` (alias `r` y `ra` con cambio automático de directorio al salir).
+- `zoxide`, `eza`, `fzf`, `Powerlevel10k` y `zsh-syntax-highlighting`.
+
+#### `ranger` (Administrador de archivos)
+
+Ranger incluye configuración en `config/ranger/` con tema Azul Neón (`neon`), bordes completos, previsualización de imágenes integrada con Kitty y soporte para iconos Nerd Fonts (`ranger_devicons`).
+
+Instalación con `pipx`:
+
+```bash
+pipx install ranger-fm
+pipx inject ranger-fm pillow
+git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
+```
+
+Al iniciar Zsh, se cargan la función `r` y el alias `ra` para navegar y conservar la carpeta seleccionada al salir.
 
 #### `thefuck` y el comando `fuck`
 

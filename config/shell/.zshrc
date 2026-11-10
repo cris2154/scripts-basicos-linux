@@ -255,21 +255,23 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=100
 bindkey '^F' autosuggest-accept
 
-# Abrir Yazi y conservar la carpeta al salir con q
-if command -v yazi >/dev/null 2>&1; then
-function y() {
-  local tmp cwd
-  tmp="$(mktemp -t "yazi-cwd.XXXXXX")" || return
+# Abrir Ranger y conservar la carpeta al salir
+if command -v ranger >/dev/null 2>&1; then
+function r() {
+  local tmp
+  tmp="$(mktemp -t "ranger-cwd.XXXXXX")" || return
 
-  command yazi "$@" --cwd-file="$tmp"
-  IFS= read -r -d '' cwd < "$tmp"
-
-  if [[ -n "$cwd" && "$cwd" != "$PWD" && -d "$cwd" ]]; then
-    builtin cd -- "$cwd"
+  command ranger --choosedir="$tmp" "$@"
+  if [[ -f "$tmp" ]]; then
+    local cwd
+    cwd="$(< "$tmp")"
+    command rm -f -- "$tmp"
+    if [[ -n "$cwd" && "$cwd" != "$PWD" && -d "$cwd" ]]; then
+      builtin cd -- "$cwd"
+    fi
   fi
-
-  command rm -f -- "$tmp"
 }
+alias ra="r"
 fi
 
 # Tema Powerlevel10k
@@ -297,6 +299,8 @@ fi
 
 # Open the isolated Gentleman Neovim profile.
 alias nv="NVIM_APPNAME=nvim-gentleman nvim"
+export EDITOR="nv"
+export VISUAL="nv"
 
 # csakura (paleta azul sky)
 command -v csakura >/dev/null 2>&1 && alias saku='csakura -c sky'

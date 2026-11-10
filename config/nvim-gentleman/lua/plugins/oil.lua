@@ -139,25 +139,6 @@ return {
   },
 
   config = function(_, opts)
-    -- Give common file types a more colorful, recognizable icon set in Oil.
-    require("nvim-web-devicons").setup({
-      color_icons = true,
-      override_by_extension = {
-        lua = { icon = "󰢱", color = "#51a0cf", name = "Lua" },
-        py = { icon = "󰌠", color = "#ffbc03", name = "Python" },
-        js = { icon = "󰌞", color = "#f1e05a", name = "JavaScript" },
-        ts = { icon = "󰛦", color = "#3178c6", name = "TypeScript" },
-        jsx = { icon = "󰜈", color = "#61dafb", name = "JavaScriptReact" },
-        tsx = { icon = "󰜈", color = "#61dafb", name = "TypeScriptReact" },
-        json = { icon = "󰘦", color = "#f1e05a", name = "Json" },
-        md = { icon = "󰍔", color = "#519aba", name = "Markdown" },
-        sh = { icon = "󱆃", color = "#89e051", name = "Shell" },
-        toml = { icon = "󰰤", color = "#9c4221", name = "Toml" },
-        yml = { icon = "󰰦", color = "#cb171e", name = "Yaml" },
-        yaml = { icon = "󰰦", color = "#cb171e", name = "Yaml" },
-      },
-    })
-
     require("oil").setup(opts)
 
     -- Custom autocmds for Oil
