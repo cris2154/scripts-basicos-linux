@@ -10,9 +10,9 @@
   "display": {
     "separator": "",
     "disableLinewrap": true,
-    "key": { "width": 8 },
     "color": { "keys": "38;2;109;40;217", "output": "38;2;237;233;254" },
     "temp": { "ndigits": 0 },
+    "size": { "ndigits": 0 },
     "percent": { "type": ["bar", "num"], "ndigits": 0 },
     "bar": {
       "width": 10,
@@ -21,12 +21,15 @@
       "color": { "elapsed": "38;2;167;139;250", "total": "38;2;76;29;149" }
     }
   },
+  // Las claves llevan su propio relleno (sin key.width): fastfetch mide mal el ancho de "│"
+  // y el borde derecho quedaba desalineado. Cada fila: 8 + 15 + 1 = 24 columnas, igual que ╭…╮.
   "modules": [
-    "break", "break", "break",
+    "break", "break",
     { "type": "custom", "format": "╭──────────────────────╮", "outputColor": "38;2;109;40;217" },
-    { "type": "cpu",    "key": "│  {#38;2;196;181;253}CPU{#}", "temp": true, "format": "{temperature}           {#38;2;109;40;217}│" },
-    { "type": "gpu",    "key": "│  {#38;2;196;181;253}GPU{#}", "hideType": "integrated", "temp": true, "format": "{temperature}           {#38;2;109;40;217}│" },
-    { "type": "memory", "key": "│  {#38;2;196;181;253}RAM{#}", "format": "{percentage-bar} {percentage} {#38;2;109;40;217}│" },
+    { "type": "cpu",    "key": "│  {#38;2;196;181;253}CPU{#}  ", "temp": true, "format": "{temperature}           {#38;2;109;40;217}│" },
+    { "type": "gpu",    "key": "│  {#38;2;196;181;253}GPU{#}  ", "hideType": "integrated", "temp": true, "format": "{temperature}           {#38;2;109;40;217}│" },
+    { "type": "memory", "key": "│  {#38;2;196;181;253}RAM{#}  ", "format": "{percentage-bar} {percentage} {#38;2;109;40;217}│" },
+    { "type": "disk",   "key": "│  {#38;2;196;181;253}SSD{#}  ", "folders": "/", "format": "{size-free} libre  {#38;2;109;40;217}│" },
     { "type": "custom", "format": "╰──────────────────────╯", "outputColor": "38;2;109;40;217" }
   ]
 }

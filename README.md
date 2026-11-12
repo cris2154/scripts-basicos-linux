@@ -18,7 +18,7 @@ ya tiene configuración: los pasos crean respaldo antes de reemplazar nada.
 | `config/terminal/kitty.conf` | `~/.config/kitty/kitty.conf` | Fuente MesloLGS NF, transparencia, cursor con estela, colores |
 | `config/nvim/` | `~/.config/nvim/` | Neovim con LazyVim. `nv` es alias de `nvim`; hay una sola configuración |
 | `config/ranger/` | `~/.config/ranger/` | ranger con previsualización de imágenes en kitty, iconos Nerd Font y tema `neon` |
-| `config/fastfetch/` | `~/.config/fastfetch/` | Logo compacto a la izquierda y recuadro redondeado con temperatura de CPU, GPU dedicada y RAM |
+| `config/fastfetch/` | `~/.config/fastfetch/` | Logo compacto a la izquierda y recuadro redondeado con temperatura de CPU y GPU, RAM y espacio libre en disco |
 | `config/cava/config` | `~/.config/cava/config` | Gradiente de 8 tonos para cava |
 | `config/thefuck/settings.py` | `~/.config/thefuck/settings.py` | Ajustes de `thefuck` |
 | `config/cmatrix/cmatrix-jp.c` | `~/.local/bin/cmatrix` | Matrix en katakana, TrueColor y fondo transparente (se compila con gcc) |

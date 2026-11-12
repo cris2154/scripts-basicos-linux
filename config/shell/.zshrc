@@ -72,7 +72,7 @@ if command -v bat >/dev/null 2>&1; then
 fi
 export FZF_ALT_C_OPTS="--preview 'eza --tree --level=2 --icons=always --color=always {} | head -100'"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window=down:3:wrap --bind 'ctrl-/:toggle-preview'"
-export FZF_DEFAULT_OPTS="--height=50% --layout=reverse --border=rounded --info=inline --prompt=❯\  --pointer=▶ --marker=✓ --color=bg+:#241a45,fg+:#ffffff,hl:#a78bfa,hl+:#c4b5fd,pointer:#a78bfa,marker:#7c3aed,prompt:#a78bfa,header:#8b5cf6,border:#7c3aed,info:#c4b5fd"
+export FZF_DEFAULT_OPTS="--height=50% --layout=reverse --border=rounded --info=inline --prompt=❯\  --pointer=▶ --marker=✓ --color=bg+:#202331,fg+:#ffffff,hl:#a78bfa,hl+:#c4b5fd,pointer:#a78bfa,marker:#7c3aed,prompt:#a78bfa,header:#8b5cf6,border:#7c3aed,info:#c4b5fd"
 
 if fzf --zsh >/dev/null 2>&1; then
   eval "$(fzf --zsh)"
@@ -84,7 +84,7 @@ fi
 if [[ -f "$HOME/.zsh/fzf-tab/fzf-tab.plugin.zsh" ]]; then
   source "$HOME/.zsh/fzf-tab/fzf-tab.plugin.zsh"
   zstyle ':completion:*' menu no
-  zstyle ':fzf-tab:*' fzf-flags --color=bg+:#241a45,fg+:#ffffff,hl:#a78bfa,hl+:#c4b5fd,pointer:#a78bfa,border:#7c3aed
+  zstyle ':fzf-tab:*' fzf-flags --color=bg+:#202331,fg+:#ffffff,hl:#a78bfa,hl+:#c4b5fd,pointer:#a78bfa,border:#7c3aed
   zstyle ':fzf-tab:*' switch-group '<' '>'
   zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --tree --level=2 --icons=always --color=always $realpath'
   zstyle ':fzf-tab:complete:z:*' fzf-preview 'eza --tree --level=2 --icons=always --color=always $realpath'
@@ -121,7 +121,7 @@ alias gd='git diff'
 alias kg='keifu'
 
 # Gestor de ramas con fzf (Ctrl+G en zsh o dentro de keifu, o el comando gbm)
-_GBM_COLORS='bg+:#241a45,fg+:#ffffff,hl:#a78bfa,hl+:#c4b5fd,pointer:#a78bfa,border:#7c3aed'
+_GBM_COLORS='bg+:#202331,fg+:#ffffff,hl:#a78bfa,hl+:#c4b5fd,pointer:#a78bfa,border:#7c3aed'
 
 # Rama de la que se creó $1 (vacío si git no lo registró)
 _gbm_parent() {
