@@ -136,13 +136,13 @@
 
   # Connect left prompt lines with these symbols. You'll probably want to use the same color
   # as POWERLEVEL9K_MULTILINE_FIRST_PROMPT_GAP_FOREGROUND below.
-  typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX='%238F╭─'
-  typeset -g POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_PREFIX='%238F├─'
-  typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='%238F╰─'
+  typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX='%F{#4c1d95}╭─'
+  typeset -g POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_PREFIX='%F{#4c1d95}├─'
+  typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='%F{#4c1d95}╰─'
   # Connect right prompt lines with these symbols.
-  typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_SUFFIX='%238F─╮'
-  typeset -g POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_SUFFIX='%238F─┤'
-  typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_SUFFIX='%238F─╯'
+  typeset -g POWERLEVEL9K_MULTILINE_FIRST_PROMPT_SUFFIX='%F{#4c1d95}─╮'
+  typeset -g POWERLEVEL9K_MULTILINE_NEWLINE_PROMPT_SUFFIX='%F{#4c1d95}─┤'
+  typeset -g POWERLEVEL9K_MULTILINE_LAST_PROMPT_SUFFIX='%F{#4c1d95}─╯'
 
   # Filler between left and right prompt on the first prompt line. You can set it to ' ', '·' or
   # '─'. The last two make it easier to see the alignment between left and right prompt and to
@@ -162,12 +162,12 @@
   fi
 
   # Default background color.
-  typeset -g POWERLEVEL9K_BACKGROUND='#0f2952'
+  typeset -g POWERLEVEL9K_BACKGROUND='#241a45'
 
   # Separator between same-color segments on the left.
-  typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR='%F{#38bdf8}\uE0B5'
+  typeset -g POWERLEVEL9K_LEFT_SUBSEGMENT_SEPARATOR='%F{#a78bfa}\uE0B5'
   # Separator between same-color segments on the right.
-  typeset -g POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR='%F{#38bdf8}\uE0B7'
+  typeset -g POWERLEVEL9K_RIGHT_SUBSEGMENT_SEPARATOR='%F{#a78bfa}\uE0B7'
   # Separator between different-color segments on the left.
   typeset -g POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR='\uE0B4'
   # Separator between different-color segments on the right.
@@ -500,7 +500,7 @@
   # Custom icon.
   # typeset -g POWERLEVEL9K_VCS_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # Custom prefix.
-  typeset -g POWERLEVEL9K_VCS_PREFIX='%244Fon '
+  typeset -g POWERLEVEL9K_VCS_PREFIX='%F{#c4b5fd}on '
 
   # Show status of repositories of these types. You can add svn and/or hg if you are
   # using them. If you do, your prompt may become slow even when your current directory
@@ -1656,7 +1656,7 @@
 
   ####################################[ time: current time ]####################################
   # Current time color.
-  typeset -g POWERLEVEL9K_TIME_FOREGROUND=66
+  typeset -g POWERLEVEL9K_TIME_FOREGROUND='#ede9fe'
   # Format for the current time: 09:51:02. See `man 3 strftime`.
   typeset -g POWERLEVEL9K_TIME_FORMAT='%D{%I:%M:%S %p}'
   # If set to true, time will update when you hit enter. This way prompts for the past
@@ -1666,7 +1666,7 @@
   # Custom icon.
   # typeset -g POWERLEVEL9K_TIME_VISUAL_IDENTIFIER_EXPANSION='⭐'
   # Custom prefix.
-  typeset -g POWERLEVEL9K_TIME_PREFIX='%244Fat '
+  typeset -g POWERLEVEL9K_TIME_PREFIX='%F{#c4b5fd}at '
 
   # Example of a user-defined prompt segment. Function prompt_example will be called on every
   # prompt if `example` prompt segment is added to POWERLEVEL9K_LEFT_PROMPT_ELEMENTS or

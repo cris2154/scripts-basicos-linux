@@ -1,36 +1,32 @@
 {
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo": {
     "type": "file",
     "source": "~/.config/fastfetch/logo.txt",
-    "position": "top",
-    "color": {
-      "1": "38;2;56;189;248",
-      "2": "38;2;103;232;249",
-      "3": "38;2;129;212;250"
-    },
-    "padding": { "top": 0, "right": 3 }
+    "position": "left",
+    "color": { "1": "38;2;196;181;253", "2": "38;2;167;139;250", "3": "38;2;139;92;246" },
+    "padding": { "top": 0, "left": 1, "right": 3 }
   },
   "display": {
-    "separator": "  ",
+    "separator": "",
     "disableLinewrap": true,
-    "color": {
-      "keys": "38;2;56;189;248",
-      "separator": "38;2;37;99;235"
-    },
-    "key": { "width": 5 },
-    "percent": { "type": ["bar", "num"] },
+    "key": { "width": 8 },
+    "color": { "keys": "38;2;109;40;217", "output": "38;2;237;233;254" },
+    "temp": { "ndigits": 0 },
+    "percent": { "type": ["bar", "num"], "ndigits": 0 },
     "bar": {
       "width": 10,
       "char": { "elapsed": "━", "total": "─" },
-      "color": {
-        "elapsed": "38;2;56;189;248",
-        "total": "38;2;15;41;82"
-      }
+      "border": { "left": "", "right": "" },
+      "color": { "elapsed": "38;2;167;139;250", "total": "38;2;76;29;149" }
     }
   },
   "modules": [
-    { "type": "cpu", "key": "CPU", "temp": true, "format": "{temperature}" },
-    { "type": "gpu", "key": "GPU", "hideType": "integrated", "temp": true, "format": "{name} · {temperature}" },
-    { "type": "memory", "key": "RAM", "format": "{percentage-bar} {used} / {total} ({percentage})" }
+    "break", "break", "break",
+    { "type": "custom", "format": "╭──────────────────────╮", "outputColor": "38;2;109;40;217" },
+    { "type": "cpu",    "key": "│  {#c4b5fd}CPU{#}", "temp": true, "format": "{temperature}           {#6d28d9}│" },
+    { "type": "gpu",    "key": "│  {#c4b5fd}GPU{#}", "hideType": "integrated", "temp": true, "format": "{temperature}           {#6d28d9}│" },
+    { "type": "memory", "key": "│  {#c4b5fd}RAM{#}", "format": "{percentage-bar} {percentage} {#6d28d9}│" },
+    { "type": "custom", "format": "╰──────────────────────╯", "outputColor": "38;2;109;40;217" }
   ]
 }
