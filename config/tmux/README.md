@@ -1,6 +1,6 @@
 # tmux y sus gestores
 
-Respaldo de `~/.tmux.conf`, con tema Azul Neón, dos filas de estado,
+Respaldo de `~/.tmux.conf`, con tema morado oscuro, dos filas de estado,
 ayuda contextual, mouse, portapapeles, imágenes mediante passthrough y barra
 de scroll en modo copia. La configuración se valida con tmux 3.8.
 
@@ -13,7 +13,7 @@ de scroll en modo copia. La configuración se valida con tmux 3.8.
 | [`../shell/.p10k.zsh`](../shell/.p10k.zsh) | `~/.p10k.zsh`; tema de Zsh, cargado por `.zshrc` cuando existe |
 | [`bin/wl-copy`](bin/wl-copy), [`bin/wl-paste`](bin/wl-paste) | Copia de los adaptadores locales de portapapeles basados en `xclip` |
 | [`../terminal/kitty.conf`](../terminal/kitty.conf) | `~/.config/kitty/kitty.conf`; fuente MesloLGS NF, transparencia y colores |
-| [`../nvim-gentleman/lua/plugins/vim-tmux-navigation.lua`](../nvim-gentleman/lua/plugins/vim-tmux-navigation.lua) | Declaración del plugin de navegación del perfil Neovim |
+| [`../nvim/lua/plugins/vim-tmux-navigation.lua`](../nvim/lua/plugins/vim-tmux-navigation.lua) | Declaración del plugin de navegación del perfil Neovim |
 
 El manager de tmux es integrado: sus formatos, atajos y ayuda están en
 `.tmux.conf`. No usa TPM ni carga scripts o archivos adicionales mediante

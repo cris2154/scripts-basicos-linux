@@ -51,8 +51,8 @@ La carpeta [`config/`](config/) contiene una copia reproducible de la configurac
 
 | Ruta | Destino | Propósito |
 | --- | --- | --- |
-| `config/nvim-gentleman/` | `~/.config/nvim-gentleman/` | Perfil aislado de Neovim basado en LazyVim (estilo Azul Neón) |
-| `config/tmux/.tmux.conf` | `~/.tmux.conf` | Atajos, mouse, portapapeles y estilo Azul Neón Intenso de tmux |
+| `config/nvim/` | `~/.config/nvim/` | Configuración de Neovim basada en LazyVim (estilo morado oscuro) |
+| `config/tmux/.tmux.conf` | `~/.tmux.conf` | Atajos, mouse, portapapeles y estilo morado oscuro de tmux |
 | `config/shell/.zshrc` | `~/.zshrc` | Aliases, funciones y carga de herramientas |
 | `config/shell/.p10k.zsh` | `~/.p10k.zsh` | Tema Powerlevel10k con cápsulas Azul Neón (`#0f2952` / `#38bdf8`) |
 | `config/cmatrix/cmatrix-jp.c` | `~/.local/bin/cmatrix` | Matrix en japonés (Katakana) con TrueColor 24-bit Azul Neón y fondo transparente |
@@ -73,13 +73,13 @@ set -e
 backup_dir="$HOME/.config/scripts-basicos-linux-backup-$(date +%Y%m%d-%H%M%S)"
 mkdir -p "$backup_dir" "$HOME/.config" "$HOME/.local/bin"
 
-[ ! -e "$HOME/.config/nvim-gentleman" ] || mv "$HOME/.config/nvim-gentleman" "$backup_dir/"
+[ ! -e "$HOME/.config/nvim" ] || mv "$HOME/.config/nvim" "$backup_dir/"
 [ ! -e "$HOME/.config/ranger" ] || mv "$HOME/.config/ranger" "$backup_dir/"
 [ ! -e "$HOME/.tmux.conf" ] || mv "$HOME/.tmux.conf" "$backup_dir/"
 [ ! -e "$HOME/.zshrc" ] || mv "$HOME/.zshrc" "$backup_dir/"
 [ ! -e "$HOME/.p10k.zsh" ] || mv "$HOME/.p10k.zsh" "$backup_dir/"
 
-cp -a config/nvim-gentleman "$HOME/.config/"
+cp -a config/nvim "$HOME/.config/"
 cp -a config/ranger "$HOME/.config/"
 cp config/tmux/.tmux.conf "$HOME/.tmux.conf"
 cp config/shell/.zshrc "$HOME/.zshrc"
@@ -120,7 +120,7 @@ El logo conserva el dibujo Unicode completo. Debajo solo muestra la temperatura 
 
 El `.zshrc` configura, entre otros:
 
-- `nv`: abre Neovim con el perfil `nvim-gentleman`.
+- `nv`: alias corto de `nvim` (misma configuración).
 - `thefuck`: genera su alias automáticamente cuando está instalado.
 - `ranger` (alias `r` y `ra` con cambio automático de directorio al salir).
 - `zoxide`, `eza`, `fzf`, `Powerlevel10k` y `zsh-syntax-highlighting`.
@@ -171,6 +171,6 @@ Instalá únicamente las herramientas que quieras usar. Si una no está instalad
 
 1. No reemplazar configuraciones existentes sin crear primero un respaldo.
 2. No copiar cachés, `__pycache__`, diccionarios generados de Vim, respaldos automáticos, estados de plugins ni credenciales.
-3. Mantener `nvim-gentleman` como perfil separado; no mezclarlo con `~/.config/nvim`.
+3. Hay una sola configuración de Neovim en `~/.config/nvim`; `nv` y `nvim` son lo mismo.
 4. Verificar la sintaxis con `zsh -n` después de modificar `.zshrc` o `.p10k.zsh`.
 5. Si se agrega una nueva herramienta, documentar su dependencia y el comando de instalación en esta sección.

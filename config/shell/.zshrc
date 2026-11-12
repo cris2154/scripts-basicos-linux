@@ -298,7 +298,7 @@ if command -v thefuck >/dev/null 2>&1; then
 fi
 
 # Open the isolated Gentleman Neovim profile.
-alias nv="NVIM_APPNAME=nvim-gentleman nvim"
+alias nv="nvim"
 export EDITOR="nv"
 export VISUAL="nv"
 

@@ -4,7 +4,7 @@ local function transparent_tabline()
     highlight.bg = nil
     highlight.ctermbg = nil
     if group == "TabLineSel" then
-      highlight.fg = 0x38BDF8
+      highlight.fg = 0xA78BFA
       highlight.bold = true
     end
     vim.api.nvim_set_hl(0, group, highlight)
@@ -12,12 +12,33 @@ local function transparent_tabline()
 end
 
 local function set_visual_selection()
-  local selection = { bg = "#2563EB", fg = "#FFFFFF", bold = true }
+  local selection = { bg = "#7C3AED", fg = "#FFFFFF", bold = true }
   vim.api.nvim_set_hl(0, "Visual", selection)
   vim.api.nvim_set_hl(0, "VisualNOS", selection)
 end
 
+-- Carpetas e iconos de carpeta en violeta (explorador de snacks, oil, neo-tree)
+local function set_explorer_colors()
+  vim.api.nvim_set_hl(0, "Directory", { fg = "#C4B5FD", bold = true })
+  vim.api.nvim_set_hl(0, "SnacksPickerDirectory", { link = "Directory" })
+  vim.api.nvim_set_hl(0, "SnacksPickerTree", { fg = "#4C1D95" })
+  vim.api.nvim_set_hl(0, "SnacksPickerPathHidden", { fg = "#8A8FA3" })
+  vim.api.nvim_set_hl(0, "SnacksPickerTitle", { fg = "#FFFFFF", bg = "#7C3AED", bold = true })
+  vim.api.nvim_set_hl(0, "SnacksPickerPrompt", { fg = "#A78BFA", bold = true })
+  vim.api.nvim_set_hl(0, "SnacksPickerMatch", { fg = "#C4B5FD", bold = true })
+  vim.api.nvim_set_hl(0, "SnacksPickerBorder", { fg = "#6D28D9" })
+  vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#6D28D9" })
+  vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#4C1D95" })
+  vim.api.nvim_set_hl(0, "MiniIconsPurple", { fg = "#C4B5FD" })
+end
+
 return {
+  {
+    -- Icono de carpeta en violeta (mini.icons es el proveedor de iconos de LazyVim)
+    "nvim-mini/mini.icons",
+    optional = true,
+    opts = { default = { directory = { hl = "MiniIconsPurple" } } },
+  },
   {
     "nvim-lualine/lualine.nvim",
     init = function()
@@ -26,34 +47,36 @@ return {
         callback = function() vim.schedule(function()
           transparent_tabline()
           set_visual_selection()
+          set_explorer_colors()
         end) end,
       })
     end,
     opts = function(_, opts)
       transparent_tabline()
       set_visual_selection()
+      set_explorer_colors()
       local theme = vim.deepcopy(require("lualine.themes.gentleman-kanagawa-blur"))
       local modes = {
-        normal = "#2563EB",
-        insert = "#0284C7",
-        visual = "#0EA5E9",
+        normal = "#7C3AED",
+        insert = "#8B5CF6",
+        visual = "#A78BFA",
         replace = "#BE185D",
-        command = "#1D4ED8",
-        terminal = "#0369A1",
+        command = "#6D28D9",
+        terminal = "#5B21B6",
       }
       for mode, background in pairs(modes) do
         theme[mode] = {
           a = { fg = "#FFFFFF", bg = background, gui = "bold" },
-          b = { fg = "#93C5FD", bg = "NONE" },
+          b = { fg = "#C4B5FD", bg = "NONE" },
           c = { fg = "#F3F6F9", bg = "NONE" },
-          x = { fg = "#93C5FD", bg = "NONE" },
-          y = { fg = "#DBEAFE", bg = "#0F2952" },
+          x = { fg = "#C4B5FD", bg = "NONE" },
+          y = { fg = "#EDE9FE", bg = "#241A45" },
           z = { fg = "#FFFFFF", bg = background, gui = "bold" },
         }
       end
       theme.inactive = {
-        a = { fg = "#93C5FD", bg = "NONE" },
-        b = { fg = "#93C5FD", bg = "NONE" },
+        a = { fg = "#C4B5FD", bg = "NONE" },
+        b = { fg = "#C4B5FD", bg = "NONE" },
         c = { fg = "#8A8FA3", bg = "NONE" },
       }
       opts.options = opts.options or {}
@@ -87,8 +110,8 @@ return {
             use_mode_colors = false,
             max_length = function() return math.floor(vim.o.columns * 0.62) end,
             buffers_color = {
-              active = { fg = "#FFFFFF", bg = "#2563EB", gui = "bold" },
-              inactive = { fg = "#93C5FD", bg = "#0F2952" },
+              active = { fg = "#FFFFFF", bg = "#7C3AED", gui = "bold" },
+              inactive = { fg = "#C4B5FD", bg = "#241A45" },
             },
             symbols = { modified = " ●", alternate_file = "", directory = " " },
             filetype_names = {
@@ -124,8 +147,8 @@ return {
             mode = 0,
             cond = function() return #vim.api.nvim_list_tabpages() > 1 end,
             tabs_color = {
-              active = { fg = "#FFFFFF", bg = "#2563EB", gui = "bold" },
-              inactive = { fg = "#93C5FD", bg = "#0F2952" },
+              active = { fg = "#FFFFFF", bg = "#7C3AED", gui = "bold" },
+              inactive = { fg = "#C4B5FD", bg = "#241A45" },
             },
             separator = nil,
             section_separators = { left = "│", right = "│" },
