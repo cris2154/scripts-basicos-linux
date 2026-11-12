@@ -1,176 +1,238 @@
-# Scripts para Linux Básicos
+# Scripts básicos Linux
 
-Este repositorio contiene una colección de scripts prácticos en Bash y Go para automatizar tareas comunes en entornos Linux (especialmente útiles en configuraciones de escritorio basadas en Wayland/Hyprland).
+Configuración personal de terminal y editor para Fedora: Zsh con
+Powerlevel10k, tmux, kitty, Neovim (LazyVim), ranger, fastfetch, cava y
+utilidades. Todo con un mismo tema morado oscuro sobre fondo transparente.
 
-## Scripts incluidos
+Sirve tanto para una instalación nueva de Fedora como para una máquina que
+ya tiene configuración: los pasos crean respaldo antes de reemplazar nada.
 
-1. **`letraS` (Bubbletea TUI):** Muestra de forma sincronizada y fluida la letra de la canción que se esté reproduciendo actualmente en Spotify local.
-2. **`despertador` (Bash):** Alarma programable para cualquier hora (por defecto las 05:00 AM) que muestra una cuenta regresiva, lanza una notificación de sistema crítica y reproduce alertas sonoras.
-3. **`spotify_alarm.sh` (Bash):** Alarma inteligente para las 5:00 AM que sube el volumen del sistema y de Spotify al 100%, inicia el reproductor y arranca la música automáticamente.
+## Qué incluye
 
----
-
-## Dependencias de los scripts
-
-Para que todos los scripts funcionen correctamente sin errores, necesitas instalar las siguientes herramientas del sistema:
-
-- `playerctl` (para leer y controlar el estado del reproductor de Spotify)
-- `libnotify` / `notify-send` (para lanzar notificaciones de escritorio)
-- `libcanberra` (para reproducir alertas de audio a través de los temas del sistema)
-- `curl` (para descargar las portadas de álbumes de Spotify)
-- `jq` (para la codificación y análisis de texto en llamadas a APIs de letras y carátulas)
-
----
-
-## Comando de instalación de dependencias "de golpe"
-
-Ejecuta el comando correspondiente al gestor de paquetes de tu distribución para instalar todas las dependencias juntas:
-
-### En Arch Linux (pacman)
-```bash
-sudo pacman -S --needed playerctl libnotify libcanberra curl jq
-```
-
-### En Ubuntu / Debian / Pop!_OS (apt)
-```bash
-sudo apt update && sudo apt install -y playerctl libnotify-bin libcanberra-gtk-module curl jq
-```
-
-### En Fedora (dnf)
-```bash
-sudo dnf install -y playerctl libnotify libcanberra-gtk-module curl jq
-```
-
----
-
-## Replicar la configuración de terminal y editor
-
-La carpeta [`config/`](config/) contiene una copia reproducible de la configuración personal de Neovim, tmux, Zsh y Powerlevel10k.
-
-### Contenido respaldado
-
-| Ruta | Destino | Propósito |
+| Ruta en el repo | Destino | Qué es |
 | --- | --- | --- |
-| `config/nvim/` | `~/.config/nvim/` | Configuración de Neovim basada en LazyVim (estilo morado oscuro) |
-| `config/tmux/.tmux.conf` | `~/.tmux.conf` | Atajos, mouse, portapapeles y estilo morado oscuro de tmux |
-| `config/shell/.zshrc` | `~/.zshrc` | Aliases, funciones y carga de herramientas |
-| `config/shell/.p10k.zsh` | `~/.p10k.zsh` | Tema Powerlevel10k con cápsulas Azul Neón (`#0f2952` / `#38bdf8`) |
-| `config/cmatrix/cmatrix-jp.c` | `~/.local/bin/cmatrix` | Matrix en japonés (Katakana) con TrueColor 24-bit Azul Neón y fondo transparente |
-| `config/pipes/pipes.sh` | `~/.local/bin/pipes.sh` | `pipes.sh` configurado con paleta Azul Neón / Cian Eléctrico (`pipes`, `pipesh`) |
-| `config/cava/config` | `~/.config/cava/config` | Gradiente de 8 tonos Azul Neón para CAVA |
-| `config/fastfetch/` | `~/.config/fastfetch/` | Logo Unicode personalizado en cian con temperatura de CPU, GPU dedicada y RAM |
-| `config/ranger/` | `~/.config/ranger/` | Administrador de archivos Ranger con tema Azul Neón (`neon`), iconos Nerd Fonts y previsualización |
-| `config/terminal/windows-terminal-settings.json` | `settings.json` (Windows Terminal) | Esquema de colores y background Azul Neón (`#03122F`) con acrílico |
+| `config/shell/.zshrc` | `~/.zshrc` | Aliases, fzf, zoxide, eza, gestor de ramas `gbm` (Ctrl+G), arranque automático de tmux |
+| `config/shell/.p10k.zsh` | `~/.p10k.zsh` | Tema Powerlevel10k con cápsulas |
+| `config/tmux/.tmux.conf` | `~/.tmux.conf` | Atajos sin prefijo, gestor de sesiones (Ctrl+q), ratón, portapapeles, barra de dos filas. Detalle en [`config/tmux/README.md`](config/tmux/README.md) |
+| `config/tmux/bin/wl-copy`, `wl-paste` | `~/.local/bin/` | Reemplazo de `wl-copy`/`wl-paste` con `xclip` para evitar el aviso de portapapeles de GNOME Wayland |
+| `config/terminal/kitty.conf` | `~/.config/kitty/kitty.conf` | Fuente MesloLGS NF, transparencia, cursor con estela, colores |
+| `config/nvim/` | `~/.config/nvim/` | Neovim con LazyVim. `nv` es alias de `nvim`; hay una sola configuración |
+| `config/ranger/` | `~/.config/ranger/` | ranger con previsualización de imágenes en kitty, iconos Nerd Font y tema `neon` |
+| `config/fastfetch/` | `~/.config/fastfetch/` | Logo propio con temperatura de CPU, GPU dedicada y RAM |
+| `config/cava/config` | `~/.config/cava/config` | Gradiente de 8 tonos para cava |
 | `config/thefuck/settings.py` | `~/.config/thefuck/settings.py` | Ajustes de `thefuck` |
+| `config/cmatrix/cmatrix-jp.c` | `~/.local/bin/cmatrix` | Matrix en katakana, TrueColor y fondo transparente (se compila con gcc) |
+| `config/pipes/pipes.sh` | `~/.local/bin/pipes.sh` | pipes.sh con paleta propia (`pipes`, `pipesh`) |
+| `config/terminal/windows-terminal-settings.json` | Windows Terminal | Esquema de colores para usar desde Windows (no aplica en Fedora) |
 
-### Instalación segura
+## Instalación en Fedora
 
-Ejecutá estos comandos desde la raíz de este repositorio. Se crea un respaldo antes de reemplazar cualquier archivo existente:
-
-```bash
-set -e
-
-backup_dir="$HOME/.config/scripts-basicos-linux-backup-$(date +%Y%m%d-%H%M%S)"
-mkdir -p "$backup_dir" "$HOME/.config" "$HOME/.local/bin"
-
-[ ! -e "$HOME/.config/nvim" ] || mv "$HOME/.config/nvim" "$backup_dir/"
-[ ! -e "$HOME/.config/ranger" ] || mv "$HOME/.config/ranger" "$backup_dir/"
-[ ! -e "$HOME/.tmux.conf" ] || mv "$HOME/.tmux.conf" "$backup_dir/"
-[ ! -e "$HOME/.zshrc" ] || mv "$HOME/.zshrc" "$backup_dir/"
-[ ! -e "$HOME/.p10k.zsh" ] || mv "$HOME/.p10k.zsh" "$backup_dir/"
-
-cp -a config/nvim "$HOME/.config/"
-cp -a config/ranger "$HOME/.config/"
-cp config/tmux/.tmux.conf "$HOME/.tmux.conf"
-cp config/shell/.zshrc "$HOME/.zshrc"
-cp config/shell/.p10k.zsh "$HOME/.p10k.zsh"
-mkdir -p "$HOME/.config/thefuck" "$HOME/.config/cava"
-cp config/thefuck/settings.py "$HOME/.config/thefuck/settings.py"
-cp config/cava/config "$HOME/.config/cava/config"
-gcc -O2 -Wall -Wextra -o "$HOME/.local/bin/cmatrix" config/cmatrix/cmatrix-jp.c
-install -m 755 config/pipes/pipes.sh "$HOME/.local/bin/pipes.sh"
-ln -sf "$HOME/.local/bin/pipes.sh" "$HOME/.local/bin/pipes"
-ln -sf "$HOME/.local/bin/pipes.sh" "$HOME/.local/bin/pipesh"
-```
-
-Después, recargá Zsh y validá Powerlevel10k:
+Ejecuta los pasos en orden, desde la raíz del repositorio. Todos los bloques
+se pueden repetir sin romper nada.
 
 ```bash
-zsh -n "$HOME/.zshrc"
-zsh -n "$HOME/.p10k.zsh"
-source "$HOME/.zshrc"
+git clone git@github.com:cris2154/scripts-basicos-linux.git ~/repos/scripts-basicos-linux
+cd ~/repos/scripts-basicos-linux
 ```
 
-### Fastfetch con logo personalizado
-
-Requiere `fastfetch` (configuración validada con la versión 2.68.1). Para instalar solo este perfil, desde la raíz del repositorio:
+### 1. Paquetes del sistema (dnf)
 
 ```bash
-if [ -e "$HOME/.config/fastfetch" ]; then
-  cp -a "$HOME/.config/fastfetch" "$HOME/.config/fastfetch.backup-$(date +%Y%m%d-%H%M%S-%N)"
-fi
-mkdir -p "$HOME/.config/fastfetch"
-cp config/fastfetch/config.jsonc config/fastfetch/logo.txt "$HOME/.config/fastfetch/"
-fastfetch
+sudo dnf install -y \
+  zsh tmux kitty neovim git curl wget unzip jq \
+  gcc make python3-pip pipx nodejs npm tree-sitter-cli \
+  fzf fd-find ripgrep bat eza zoxide thefuck \
+  wl-clipboard xclip xsel \
+  fastfetch cava btop \
+  ImageMagick poppler-utils \
+  playerctl mpv yt-dlp libnotify libcanberra \
+  lazygit gh
 ```
 
-El logo conserva el dibujo Unicode completo. Debajo solo muestra la temperatura de la CPU, la GPU dedicada con su temperatura y una barra de RAM; las GPU integradas se omiten.
+Si `lazygit` no aparece en tu versión de Fedora, está en COPR:
 
-### Herramientas usadas por los aliases
+```bash
+sudo dnf copr enable -y atim/lazygit && sudo dnf install -y lazygit
+```
 
-El `.zshrc` configura, entre otros:
+Opcionales para que ranger previsualice más formatos (vídeo, audio, archivos
+comprimidos, documentos de oficina):
 
-- `nv`: alias corto de `nvim` (misma configuración).
-- `thefuck`: genera su alias automáticamente cuando está instalado.
-- `ranger` (alias `r` y `ra` con cambio automático de directorio al salir).
-- `zoxide`, `eza`, `fzf`, `Powerlevel10k` y `zsh-syntax-highlighting`.
+```bash
+sudo dnf install -y ffmpegthumbnailer mediainfo atool p7zip highlight perl-Image-ExifTool w3m-img catdoc odt2txt
+```
 
-#### `ranger` (Administrador de archivos)
+### 2. Herramientas que no están en dnf
 
-Ranger incluye configuración en `config/ranger/` con tema Azul Neón (`neon`), bordes completos, previsualización de imágenes integrada con Kitty y soporte para iconos Nerd Fonts (`ranger_devicons`).
+Fuente MesloLGS NF (la usan kitty, p10k y los iconos de tmux y Neovim):
 
-Instalación con `pipx`:
+```bash
+mkdir -p ~/.local/share/fonts
+for f in Regular Bold Italic "Bold Italic"; do
+  curl -fLo ~/.local/share/fonts/"MesloLGS NF $f.ttf" \
+    "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20${f// /%20}.ttf"
+done
+fc-cache -f
+```
+
+Powerlevel10k y plugins de Zsh (se clonan en las rutas que `.zshrc` espera):
+
+```bash
+[ -d ~/powerlevel10k ] || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+mkdir -p ~/.zsh
+[ -d ~/.zsh/zsh-autosuggestions ]     || git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+[ -d ~/.zsh/zsh-syntax-highlighting ] || git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/zsh-syntax-highlighting
+[ -d ~/.zsh/fzf-tab ]                 || git clone --depth=1 https://github.com/Aloxaf/fzf-tab ~/.zsh/fzf-tab
+```
+
+ranger con pipx (queda en `~/.local/bin/ranger`):
 
 ```bash
 pipx install ranger-fm
 pipx inject ranger-fm pillow
-git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 ```
 
-Al iniciar Zsh, se cargan la función `r` y el alias `ra` para navegar y conservar la carpeta seleccionada al salir.
-
-#### `thefuck` y el comando `fuck`
-
-`thefuck` es una herramienta externa que debe estar instalada en la máquina. Su configuración se respalda en `config/thefuck/settings.py`. Al iniciar Zsh, `config/shell/.zshrc` ejecuta `thefuck --alias` y genera la función interactiva `fuck`.
-
-Verificá la instalación con:
+keifu (gestor de git en terminal, alias `kg`) via Homebrew para Linux. Si no
+lo quieres, omite este bloque; `.zshrc` lo ignora cuando no existe:
 
 ```bash
-command -v thefuck
-thefuck --alias
-command -v fuck
+[ -x ~/.linuxbrew/bin/brew ] || git clone https://github.com/Homebrew/brew ~/.linuxbrew
+eval "$(~/.linuxbrew/bin/brew shellenv)"
+brew install keifu
 ```
 
-Si falta, instalalo con el método recomendado por tu distribución o mediante `pipx`:
+### 3. Copiar la configuración (con respaldo)
+
+Mueve lo que ya exista a una carpeta de respaldo y copia los archivos del
+repo. En una instalación nueva simplemente no hay nada que respaldar.
 
 ```bash
-pipx install thefuck
+set -e
+cd ~/repos/scripts-basicos-linux
+
+backup_dir="$HOME/.config/scripts-basicos-linux-backup-$(date +%Y%m%d-%H%M%S)"
+mkdir -p "$backup_dir" ~/.config ~/.local/bin
+
+respaldar() { [ ! -e "$1" ] || mv "$1" "$backup_dir/"; }
+respaldar ~/.zshrc
+respaldar ~/.p10k.zsh
+respaldar ~/.tmux.conf
+respaldar ~/.config/kitty/kitty.conf
+respaldar ~/.config/nvim
+respaldar ~/.config/ranger
+respaldar ~/.config/fastfetch
+respaldar ~/.config/cava/config
+respaldar ~/.config/thefuck/settings.py
+
+cp config/shell/.zshrc ~/.zshrc
+cp config/shell/.p10k.zsh ~/.p10k.zsh
+cp config/tmux/.tmux.conf ~/.tmux.conf
+install -m 755 config/tmux/bin/wl-copy config/tmux/bin/wl-paste ~/.local/bin/
+mkdir -p ~/.config/kitty ~/.config/cava ~/.config/thefuck ~/.config/fastfetch
+cp config/terminal/kitty.conf ~/.config/kitty/kitty.conf
+cp -a config/nvim ~/.config/nvim
+cp -a config/ranger ~/.config/ranger
+cp config/fastfetch/config.jsonc config/fastfetch/logo.txt ~/.config/fastfetch/
+cp config/cava/config ~/.config/cava/config
+cp config/thefuck/settings.py ~/.config/thefuck/settings.py
+gcc -O2 -Wall -Wextra -o ~/.local/bin/cmatrix config/cmatrix/cmatrix-jp.c
+install -m 755 config/pipes/pipes.sh ~/.local/bin/pipes.sh
+ln -sf ~/.local/bin/pipes.sh ~/.local/bin/pipes
+ln -sf ~/.local/bin/pipes.sh ~/.local/bin/pipesh
+
+echo "Respaldo en: $backup_dir"
 ```
 
-Después recargá la shell:
+Si quieres volver atrás, copia de vuelta lo que hay en `$backup_dir`.
+
+### 4. Zsh como shell por defecto y recarga del PATH
 
 ```bash
-source ~/.zshrc
+sudo usermod -s /usr/bin/zsh "$USER"
+zsh -n ~/.zshrc && zsh -n ~/.p10k.zsh   # comprueba sintaxis, no imprime nada si está bien
+export PATH="$HOME/.local/bin:$PATH"; hash -r
+exec zsh
 ```
 
-Instalá únicamente las herramientas que quieras usar. Si una no está instalada, eliminá su bloque del `.zshrc` o instalala con el gestor de paquetes de tu distribución.
+Al entrar en Zsh, `.zshrc` abre automáticamente la sesión `main` de tmux. Para
+abrir una shell sin tmux: `NO_TMUX=1 zsh`.
 
-> **Seguridad:** revisá el contenido antes de copiarlo a otra máquina. No agregues tokens, claves SSH, contraseñas ni archivos `.env` a este repositorio.
+Cierra la sesión gráfica y vuelve a entrar para que el cambio de shell y la
+fuente nueva apliquen en todas las terminales. kitty recarga su config en
+caliente con `pkill -USR1 kitty`.
 
-### Notas para agentes
+### 5. Primer arranque de Neovim
+
+Instala los plugins y los parsers de treesitter sin abrir la interfaz:
+
+```bash
+nvim --headless "+Lazy! sync" +qa
+nvim --headless "+TSUpdateSync" +qa
+```
+
+Después abre `nvim` y ejecuta `:checkhealth`. Lo que necesita cada parte:
+
+- `nodejs` y `npm`: vista previa de markdown y Copilot.
+- `gcc`, `make`, `curl`: compilación de treesitter y descarga del binario de avante.
+- `ripgrep`, `fd-find`, `fzf`: búsqueda de archivos y texto.
+- `lazygit`: pestaña de git (`<leader>gg`).
+- `ranger`: integración con el explorador (`<leader>r`).
+- `xclip` o `wl-clipboard`: portapapeles.
+- `claude`, `opencode`, `gemini`: solo si usas esos asistentes; los plugins se cargan bajo demanda y no fallan si faltan.
+
+### 6. Comprobación rápida
+
+```bash
+fastfetch                         # logo y temperaturas
+tmux -V && tmux source-file ~/.tmux.conf
+command -v fuck ranger keifu lazygit nvim eza bat fzf zoxide
+fc-list | grep -c "MesloLGS NF"   # debe ser 4
+```
+
+## Máquina con configuración existente
+
+- Los archivos anteriores quedan en `~/.config/scripts-basicos-linux-backup-<fecha>`.
+- Si tenías aliases o funciones propias en `~/.zshrc`, cópialos del respaldo al nuevo archivo. Mantén los extras al final, después de la línea que carga `zsh-syntax-highlighting`.
+- El repo ya no usa el perfil separado `nvim-gentleman`. Si lo tienes de una versión anterior, puedes borrar `~/.config/nvim-gentleman`, `~/.local/share/nvim-gentleman`, `~/.local/state/nvim-gentleman` y `~/.cache/nvim-gentleman`.
+- Si ya tenías `~/.local/share/nvim` de otra configuración, bórralo antes del paso 5 para que LazyVim instale sus plugins limpios.
+
+## Atajos principales
+
+| Atajo | Dónde | Acción |
+| --- | --- | --- |
+| Alt+c | tmux | Nueva ventana |
+| Ctrl+Alt+x | tmux | Cerrar ventana |
+| Alt+Shift+c | tmux | Nueva sesión |
+| Ctrl+q | tmux | Gestor de sesiones, ventanas y paneles |
+| Ctrl+t / Ctrl+f | tmux | Dividir horizontal / vertical |
+| Ctrl+x | tmux | Cerrar panel |
+| Ctrl+z | tmux | Focus: amplía el panel y oculta la barra |
+| Ctrl+G | zsh y keifu | Gestor de ramas `gbm` (switch, pull, push, borrar) |
+| `r` / `ra` | zsh | ranger, cambiando al directorio elegido al salir |
+| `nv` | zsh | Neovim |
+| `kg` | zsh | keifu |
+
+Más detalle de tmux y del gestor de ramas en [`config/tmux/README.md`](config/tmux/README.md).
+
+## Mantener el repo al día
+
+Cuando cambies algo en tu máquina, cópialo al repo y haz commit:
+
+```bash
+cd ~/repos/scripts-basicos-linux
+cp ~/.zshrc config/shell/.zshrc
+cp ~/.tmux.conf config/tmux/.tmux.conf
+cp ~/.config/kitty/kitty.conf config/terminal/kitty.conf
+rsync -a --delete --exclude lazy-lock.json ~/.config/nvim/ config/nvim/
+git status
+```
+
+> **Seguridad:** no agregues tokens, claves SSH, contraseñas ni archivos `.env` al repositorio. Revisa `git diff` antes de cada commit.
+
+## Notas para agentes
 
 1. No reemplazar configuraciones existentes sin crear primero un respaldo.
-2. No copiar cachés, `__pycache__`, diccionarios generados de Vim, respaldos automáticos, estados de plugins ni credenciales.
+2. No copiar cachés, `__pycache__`, estados de plugins ni credenciales.
 3. Hay una sola configuración de Neovim en `~/.config/nvim`; `nv` y `nvim` son lo mismo.
-4. Verificar la sintaxis con `zsh -n` después de modificar `.zshrc` o `.p10k.zsh`.
-5. Si se agrega una nueva herramienta, documentar su dependencia y el comando de instalación en esta sección.
+4. Verificar la sintaxis con `zsh -n` después de modificar `.zshrc` o `.p10k.zsh`, y recargar tmux con `tmux source-file ~/.tmux.conf`.
+5. Si se agrega una herramienta nueva, documentar su paquete en el paso 1 o 2 de la instalación.
