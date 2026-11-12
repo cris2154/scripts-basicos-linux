@@ -24,9 +24,9 @@
   "modules": [
     "break", "break", "break",
     { "type": "custom", "format": "╭──────────────────────╮", "outputColor": "38;2;109;40;217" },
-    { "type": "cpu",    "key": "│  {#c4b5fd}CPU{#}", "temp": true, "format": "{temperature}           {#6d28d9}│" },
-    { "type": "gpu",    "key": "│  {#c4b5fd}GPU{#}", "hideType": "integrated", "temp": true, "format": "{temperature}           {#6d28d9}│" },
-    { "type": "memory", "key": "│  {#c4b5fd}RAM{#}", "format": "{percentage-bar} {percentage} {#6d28d9}│" },
+    { "type": "cpu",    "key": "│  {#38;2;196;181;253}CPU{#}", "temp": true, "format": "{temperature}           {#38;2;109;40;217}│" },
+    { "type": "gpu",    "key": "│  {#38;2;196;181;253}GPU{#}", "hideType": "integrated", "temp": true, "format": "{temperature}           {#38;2;109;40;217}│" },
+    { "type": "memory", "key": "│  {#38;2;196;181;253}RAM{#}", "format": "{percentage-bar} {percentage} {#38;2;109;40;217}│" },
     { "type": "custom", "format": "╰──────────────────────╯", "outputColor": "38;2;109;40;217" }
   ]
 }
