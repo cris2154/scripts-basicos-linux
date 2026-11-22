@@ -1,35 +1,100 @@
+// Made by MHIA (Adapted & Fixed for AMD / Fedora)
+// Github: https://github.com/MHashir09
+
 {
-  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
-  "logo": {
-    "type": "file",
-    "source": "~/.config/fastfetch/logo.txt",
-    "position": "left",
-    "color": { "1": "38;2;196;181;253", "2": "38;2;167;139;250", "3": "38;2;139;92;246" },
-    "padding": { "top": 0, "left": 1, "right": 3 }
-  },
-  "display": {
-    "separator": "",
-    "disableLinewrap": true,
-    "color": { "keys": "38;2;109;40;217", "output": "38;2;237;233;254" },
-    "temp": { "ndigits": 0 },
-    "size": { "ndigits": 0 },
-    "percent": { "type": ["bar", "num"], "ndigits": 0 },
-    "bar": {
-      "width": 10,
-      "char": { "elapsed": "━", "total": "─" },
-      "border": { "left": "", "right": "" },
-      "color": { "elapsed": "38;2;167;139;250", "total": "38;2;76;29;149" }
-    }
-  },
-  // Las claves llevan su propio relleno (sin key.width): fastfetch mide mal el ancho de "│"
-  // y el borde derecho quedaba desalineado. Cada fila: 8 + 15 + 1 = 24 columnas, igual que ╭…╮.
-  "modules": [
-    "break", "break",
-    { "type": "custom", "format": "╭──────────────────────╮", "outputColor": "38;2;109;40;217" },
-    { "type": "cpu",    "key": "│  {#38;2;196;181;253}CPU{#}  ", "temp": true, "format": "{temperature}           {#38;2;109;40;217}│" },
-    { "type": "gpu",    "key": "│  {#38;2;196;181;253}GPU{#}  ", "hideType": "integrated", "temp": true, "format": "{temperature}           {#38;2;109;40;217}│" },
-    { "type": "memory", "key": "│  {#38;2;196;181;253}RAM{#}  ", "format": "{percentage-bar} {percentage} {#38;2;109;40;217}│" },
-    { "type": "disk",   "key": "│  {#38;2;196;181;253}SSD{#}  ", "folders": "/", "format": "{size-free} libre  {#38;2;109;40;217}│" },
-    { "type": "custom", "format": "╰──────────────────────╯", "outputColor": "38;2;109;40;217" }
-  ]
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "file",
+        "color": {"1": "38;2;180;120;255", "2": "38;2;180;120;255", "3": "38;2;180;120;255", "4": "38;2;180;120;255", "5": "38;2;180;120;255", "6": "38;2;180;120;255", "7": "38;2;180;120;255", "8": "38;2;180;120;255", "9": "38;2;180;120;255"},
+        "source": "~/.config/fastfetch/logo/logo.txt",
+        "padding": {
+            "top": 1,
+            "right": 5,
+            "left": 3
+        }
+    },
+    "display": {
+        "separator": "  ",
+        "color": {"keys": "38;2;180;120;255", "title": "38;2;180;120;255", "output": "38;2;180;120;255", "separator": "38;2;180;120;255"}
+    },
+    "modules": [
+        "break",
+        {
+            "type": "custom",
+            "key": "╭─────────────────────────────────────────╮"
+        },
+        {
+            "type": "custom",
+            "key": "│                                         │"
+        },
+        {
+            "type": "command",
+            "key": "│  OS           ",
+            "text": "source /etc/os-release && echo \"$NAME $VERSION_ID\"",
+            "format": "{>22}  │"
+        },
+        {
+            "type": "command",
+            "key": "│  Kernel       ",
+            "text": "uname -r | cut -d '-' -f1",
+            "format": "{>22}  │"
+        },
+        {
+            "type": "command",
+            "key": "│  Uptime       ",
+            "text": "uptime -p | sed -E 's/up //; s/ days?/d/g; s/ hours?/h/g; s/ minutes?/m/g'",
+            "format": "{>22}  │"
+        },
+        {
+            "type": "shell",
+            "key": "│  Shell        ",
+            "format": "{pretty-name>22}  │"
+        },
+        {
+            "type": "command",
+            "key": "│  WM           ",
+            "text": "echo ${XDG_CURRENT_DESKTOP:-GNOME}",
+            "format": "{>22}  │"
+        },
+        {
+            "type": "command",
+            "key": "│  Ram          ",
+            "text": "free -m | awk 'NR==2{printf \"%.2f / %.2f GiB\",$3/1024,$2/1024}'",
+            "format": "{>22}  │"
+        },
+        {
+            "type": "cpu",
+            "key": "│  CPU          ",
+            "format": "{name>22}  │"
+        },
+        {
+            "type": "disk",
+            "key": "│  Disk         ",
+            "format": "{size-used} / {size-total>10}  │"
+        },
+        {
+            "type": "packages",
+            "key": "│  Packages     ",
+            "format": "{all>22}  │"
+        },
+        {
+            "type": "command",
+            "key": "│  Owner        ",
+            "text": "echo $USER | tr '[:lower:]' '[:upper:]'",
+            "format": "{>22}  │"
+        },
+        {
+            "type": "custom",
+            "key": "│                                         │"
+        },
+        {
+            "type": "custom",
+            "key": "│     WE ARE LIBRE ! ── 我々は自由だ！    │"
+        },
+        {
+            "type": "custom",
+            "key": "╰─────────────────────────────────────────╯"
+        },
+        "break"
+    ]
 }

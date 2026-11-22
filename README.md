@@ -132,7 +132,7 @@ mkdir -p ~/.config/kitty ~/.config/cava ~/.config/thefuck ~/.config/fastfetch
 cp config/terminal/kitty.conf ~/.config/kitty/kitty.conf
 cp -a config/nvim ~/.config/nvim
 cp -a config/ranger ~/.config/ranger
-cp config/fastfetch/config.jsonc config/fastfetch/logo.txt ~/.config/fastfetch/
+cp -r config/fastfetch/* ~/.config/fastfetch/
 cp config/cava/config ~/.config/cava/config
 cp config/thefuck/settings.py ~/.config/thefuck/settings.py
 gcc -O2 -Wall -Wextra -o ~/.local/bin/cmatrix config/cmatrix/cmatrix-jp.c
