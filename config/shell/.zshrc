@@ -255,6 +255,10 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=100
 bindkey '^F' autosuggest-accept
 
+# ~/.local/bin debe estar en el PATH antes de buscar ranger; si no, `r` queda
+# como el builtin de zsh que repite el último comando.
+export PATH="$HOME/.local/bin:$PATH"
+
 # Abrir Ranger y conservar la carpeta al salir
 if command -v ranger >/dev/null 2>&1; then
 function r() {
@@ -288,8 +292,6 @@ elif [[ -f "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; 
   source "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
 
-export PATH="$HOME/.local/bin:$PATH"
-
 if command -v thefuck >/dev/null 2>&1; then
   if _thefuck_alias=$(thefuck --alias 2>/dev/null); then
     eval "$_thefuck_alias"
@@ -305,9 +307,9 @@ export VISUAL="nv"
 # csakura (paleta azul sky)
 command -v csakura >/dev/null 2>&1 && alias saku='csakura -c sky'
 
-# cmatrix en japonés (Katakana) + Azul Neón por defecto
-alias cmatrix="$HOME/.local/bin/cmatrix -c -C blue"
-alias matrix="$HOME/.local/bin/cmatrix -c -C blue"
+# cmatrix en japonés (Katakana) + Morado Oscuro por defecto
+alias cmatrix="$HOME/.local/bin/cmatrix -c -C purple"
+alias matrix="$HOME/.local/bin/cmatrix -c -C purple"
 
 # pipes.sh en Azul Neón
 alias pipes="$HOME/.local/bin/pipes.sh"
@@ -315,3 +317,14 @@ alias pipesh="$HOME/.local/bin/pipes.sh"
 
 # CAVA: solo usa cava-windows si existe (WSL)
 command -v cava-windows >/dev/null 2>&1 && alias cava='cava-windows'
+
+# Música: control de lo que suena (playerctl) y búsqueda en YouTube (ytfzf + mpv)
+alias pp="playerctl play-pause"
+alias nx="playerctl next"
+alias pv="playerctl previous"
+alias np="playerctl metadata --format '{{artist}} - {{title}}'"
+alias yt="ytfzf -m"        # yt "nombre de la canción": solo audio
+alias ytv="ytfzf"          # con video
+
+# Binarios instalados con cargo (youtube-tui, etc.)
+export PATH="$HOME/.cargo/bin:$PATH"
