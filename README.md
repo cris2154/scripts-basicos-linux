@@ -130,6 +130,8 @@ respaldar ~/.zshrc
 respaldar ~/.p10k.zsh
 respaldar ~/.tmux.conf
 respaldar ~/.config/kitty/kitty.conf
+respaldar ~/.config/kitty/dark-theme.auto.conf
+respaldar ~/.config/kitty/light-theme.auto.conf
 respaldar ~/.config/nvim
 respaldar ~/.config/ranger
 respaldar ~/.config/fastfetch

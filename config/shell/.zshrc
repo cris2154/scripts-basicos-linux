@@ -55,6 +55,8 @@ if [[ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
   source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 elif [[ -f "$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
   source "$HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh"
+elif [[ -f "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
+  source "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fi
 bindkey '^[[C' forward-char
 
@@ -281,6 +283,8 @@ fi
 # Tema Powerlevel10k
 if [[ -f ~/powerlevel10k/powerlevel10k.zsh-theme ]]; then
   source ~/powerlevel10k/powerlevel10k.zsh-theme
+elif [[ -f ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme ]]; then
+  source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 fi
 
 [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
@@ -290,6 +294,8 @@ if [[ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
   source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 elif [[ -f "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
   source "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+elif [[ -f "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" ]]; then
+  source "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 fi
 
 if command -v thefuck >/dev/null 2>&1; then
