@@ -92,6 +92,18 @@ pipx install ranger-fm
 pipx inject ranger-fm pillow
 ```
 
+ytfzf (búsqueda en YouTube, alias `yt` y `ytv`). No está en dnf; se instala
+en `/usr/local/bin/ytfzf` y usa `mpv`, `yt-dlp`, `jq` y `fzf` del paso 1:
+
+```bash
+if ! command -v ytfzf >/dev/null; then
+  tmp="$(mktemp -d)"
+  git clone --depth=1 https://github.com/pystardust/ytfzf "$tmp/ytfzf"
+  sudo make -C "$tmp/ytfzf" install
+  rm -rf "$tmp"
+fi
+```
+
 keifu (gestor de git en terminal, alias `kg`) via Homebrew para Linux. Si no
 lo quieres, omite este bloque; `.zshrc` lo ignora cuando no existe:
 
