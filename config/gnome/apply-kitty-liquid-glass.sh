@@ -32,38 +32,14 @@ app = Gio.Settings.new_full(app_schema, None, None)
 
 pipelines = root.get_value("pipelines").unpack()
 pipelines["pipeline_kitty_blur"] = {
-    "name": "Kitty Liquid Glass",
+    "name": "Kitty Smooth Blur",
     "effects": [
         {
             "type": "dual_kawase_blur",
-            "id": "effect_kitty_lg_blur",
+            "id": "effect_kitty_smooth_blur",
             "params": {
-                "unscaled_radius": 45,
-                "brightness": 0.65,
-            },
-        },
-        {
-            "type": "luminosity",
-            "id": "effect_kitty_lg_luminosity",
-            "params": {
-                "saturation_multiplicator": 1.15,
-            },
-        },
-        {
-            "type": "refraction",
-            "id": "effect_kitty_lg_refraction",
-            "params": {
-                "strength": 0.85,
-                "blur_radius": 24,
-                "edge_size": 36,
-                "tint": 0.08,
-            },
-        },
-        {
-            "type": "noise",
-            "id": "effect_kitty_lg_noise",
-            "params": {
-                "noise": 0.06,
+                "unscaled_radius": 60,
+                "brightness": 0.60,
             },
         },
     ],
@@ -98,7 +74,7 @@ root.set_boolean("power-saver", False)
 
 app.set_boolean("blur", True)
 app.set_boolean("dynamic-opacity", False)
-app.set_boolean("static-blur", False)
+app.set_boolean("static-blur", True)
 app.set_int("opacity", 255)
 app.set_strv("whitelist", ["*kitty*"])
 app.set_string("pipeline", "pipeline_kitty_blur")
