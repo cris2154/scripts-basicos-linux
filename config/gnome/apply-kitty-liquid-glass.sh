@@ -38,8 +38,8 @@ pipelines["pipeline_kitty_blur"] = {
             "type": "dual_kawase_blur",
             "id": "effect_kitty_smooth_blur",
             "params": {
-                "unscaled_radius": 60,
-                "brightness": 0.60,
+                "unscaled_radius": 180,
+                "brightness": 0.45,
             },
         },
     ],
@@ -74,7 +74,7 @@ root.set_boolean("power-saver", False)
 
 app.set_boolean("blur", True)
 app.set_boolean("dynamic-opacity", False)
-app.set_boolean("static-blur", True)
+app.set_boolean("static-blur", False)
 app.set_int("opacity", 255)
 app.set_strv("whitelist", ["*kitty*"])
 app.set_string("pipeline", "pipeline_kitty_blur")
