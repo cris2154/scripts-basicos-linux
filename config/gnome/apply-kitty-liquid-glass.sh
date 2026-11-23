@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Apply the "Kitty Liquid Glass" blur pipeline to GNOME's Blur my Shell extension.
+# Apply the "Kitty Ultra Smooth Blur" pipeline to GNOME's Blur my Shell extension.
 set -euo pipefail
 
 SCHEMA_DIR="$HOME/.local/share/gnome-shell/extensions/blur-my-shell@aunetx/schemas"
@@ -96,4 +96,4 @@ if command -v gnome-extensions >/dev/null 2>&1; then
   gnome-extensions enable blur-my-shell@aunetx >/dev/null 2>&1 || true
 fi
 
-echo "Applied Kitty Liquid Glass pipeline to blur-my-shell@aunetx."
+echo "Applied Kitty Ultra Smooth Blur pipeline to blur-my-shell@aunetx."
