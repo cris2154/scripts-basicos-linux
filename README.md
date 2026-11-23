@@ -15,7 +15,8 @@ ya tiene configuración: los pasos crean respaldo antes de reemplazar nada.
 | `config/shell/.p10k.zsh` | `~/.p10k.zsh` | Tema Powerlevel10k con cápsulas |
 | `config/tmux/.tmux.conf` | `~/.tmux.conf` | Atajos sin prefijo, gestor de sesiones (Ctrl+q), ratón, portapapeles, barra de dos filas. Detalle en [`config/tmux/README.md`](config/tmux/README.md) |
 | `config/tmux/bin/wl-copy`, `wl-paste` | `~/.local/bin/` | Reemplazo de `wl-copy`/`wl-paste` con `xclip` para evitar el aviso de portapapeles de GNOME Wayland |
-| `config/terminal/kitty.conf` | `~/.config/kitty/kitty.conf` | Fuente MesloLGS NF, transparencia, cursor con estela, colores |
+| `config/terminal/kitty.conf` | `~/.config/kitty/kitty.conf` | Fuente MesloLGS NF, transparencia (`0.3`), cursor con estela, colores |
+| `config/gnome/apply-kitty-liquid-glass.sh` | GNOME `blur-my-shell@aunetx` | Configura el efecto Liquid Glass (blur + refracción + ruido) para Kitty en GNOME Wayland |
 | `config/nvim/` | `~/.config/nvim/` | Neovim con LazyVim. `nv` es alias de `nvim`; hay una sola configuración |
 | `config/ranger/` | `~/.config/ranger/` | ranger con previsualización de imágenes en kitty, iconos Nerd Font y tema `neon` |
 | `config/fastfetch/` | `~/.config/fastfetch/` | Logo compacto a la izquierda y recuadro redondeado con temperatura de CPU y GPU, RAM y espacio libre en disco |
@@ -144,6 +145,7 @@ cp config/tmux/.tmux.conf ~/.tmux.conf
 install -m 755 config/tmux/bin/wl-copy config/tmux/bin/wl-paste ~/.local/bin/
 mkdir -p ~/.config/kitty ~/.config/cava ~/.config/thefuck ~/.config/fastfetch
 cp config/terminal/kitty.conf ~/.config/kitty/kitty.conf
+[[ -d ~/.local/share/gnome-shell/extensions/blur-my-shell@aunetx/schemas ]] && bash config/gnome/apply-kitty-liquid-glass.sh
 cp -a config/nvim ~/.config/nvim
 cp -a config/ranger ~/.config/ranger
 cp -r config/fastfetch/* ~/.config/fastfetch/
