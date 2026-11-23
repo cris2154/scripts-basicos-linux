@@ -32,13 +32,21 @@ app = Gio.Settings.new_full(app_schema, None, None)
 
 pipelines = root.get_value("pipelines").unpack()
 pipelines["pipeline_kitty_blur"] = {
-    "name": "Kitty Smooth Blur",
+    "name": "Kitty Ultra Smooth Blur",
     "effects": [
         {
             "type": "dual_kawase_blur",
-            "id": "effect_kitty_smooth_blur",
+            "id": "effect_kitty_smooth_blur_1",
             "params": {
-                "unscaled_radius": 180,
+                "unscaled_radius": 200,
+                "brightness": 1.0,
+            },
+        },
+        {
+            "type": "dual_kawase_blur",
+            "id": "effect_kitty_smooth_blur_2",
+            "params": {
+                "unscaled_radius": 200,
                 "brightness": 0.45,
             },
         },
